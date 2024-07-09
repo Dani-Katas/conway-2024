@@ -9,24 +9,23 @@ public class Cell {
   }
 
   public static Cell alive() {
-    return new Cell(true);
+    return new AliveCell();
   }
 
   public static Cell dead() {
-    return new Cell(false);
+    return new DeadCell();
   }
 
   public Cell nextGeneration(final Neighbors neighbors) {
-    final long aliveNeighbors = neighbors.countAlive();
     if (!alive) {
-      if(aliveNeighbors == 3) {
+      if(neighbors.countAlive() == 3) {
         return new Cell(true);
       }
 
       return new Cell(false);
     }
 
-    if (aliveNeighbors == 2 || aliveNeighbors == 3) {
+    if (neighbors.countAlive() == 2 || neighbors.countAlive() == 3) {
       return new Cell(true);
     }
 
