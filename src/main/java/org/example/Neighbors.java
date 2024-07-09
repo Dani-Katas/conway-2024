@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Neighbors {
@@ -20,6 +21,24 @@ public class Neighbors {
     final Cell cell7,
     final Cell cell8) {
     return new Neighbors(List.of(cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8));
+  }
+
+  static Neighbors allDead() {
+    return of(Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead());
+  }
+
+  static Neighbors withAliveAmount(final int amount) {
+    if (amount > 8 || amount < 0) {
+      throw new IllegalArgumentException("Amount of alive cells must be less than 9");
+    }
+
+    final ArrayList<Cell> cells = new ArrayList<>();
+
+    for (int i = 0; i < 8; i++) {
+      cells.add(i < amount ? Cell.alive() : Cell.dead());
+    }
+
+    return new Neighbors(cells);
   }
 
   public List<Cell> getCells() {

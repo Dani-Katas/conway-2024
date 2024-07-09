@@ -10,23 +10,11 @@ public abstract class Cell {
     return new DeadCell();
   }
 
-  public Cell nextGeneration(final Neighbors neighbors) {
-    if (isDead()) {
-      if(neighbors.countAlive() == 3) {
-        return Cell.alive();
-      }
-
-      return Cell.dead();
-    }
-
-    if (neighbors.countAlive() == 2 || neighbors.countAlive() == 3) {
-      return Cell.alive();
-    }
-
-    return Cell.dead();
-  }
+  public abstract Cell nextGeneration(Neighbors neighbors);
 
   public abstract boolean isAlive();
 
-  public abstract boolean isDead();
+  public boolean isDead() {
+    return !isAlive();
+  }
 }

@@ -12,7 +12,11 @@ public class DeadCell extends Cell {
   }
 
   @Override
-  public boolean isDead() {
-    return true;
+  public Cell nextGeneration(final Neighbors neighbors) {
+    if (neighbors.countAlive() == 3) {
+      return Cell.alive();
+    }
+
+    return Cell.dead();
   }
 }
