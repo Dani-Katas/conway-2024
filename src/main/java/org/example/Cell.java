@@ -17,7 +17,7 @@ public class Cell {
   }
 
   public Cell nextGeneration(final Neighbors neighbors) {
-    final long aliveNeighbors = neighbors.getAliveNeighbors();
+    final long aliveNeighbors = neighbors.countAlive();
     if (!alive) {
       if(aliveNeighbors == 3) {
         return new Cell(true);

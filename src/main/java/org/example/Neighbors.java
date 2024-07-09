@@ -26,7 +26,7 @@ public class Neighbors {
     return cells;
   }
 
-  long getAliveNeighbors() {
+  long countAlive() {
     return getCells().stream().filter(Cell::isAlive).count();
   }
 }
