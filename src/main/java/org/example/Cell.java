@@ -38,4 +38,8 @@ public class Cell {
   public boolean isAlive() {
     return alive;
   }
+
+  public boolean isDead() {
+    return !alive;
+  }
 }

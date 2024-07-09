@@ -14,7 +14,7 @@ public class CellTest {
 
     Cell nextCell = cell.nextGeneration(neighbors);
 
-    assertThat(nextCell.isAlive()).isFalse();
+    assertThat(nextCell.isDead()).isTrue();
   }
 
   @Test
@@ -44,7 +44,7 @@ public class CellTest {
 
     Cell nextCell = cell.nextGeneration(neighbors);
 
-    assertThat(nextCell.isAlive()).isFalse();
+    assertThat(nextCell.isDead()).isTrue();
   }
 
   @Test
@@ -54,7 +54,7 @@ public class CellTest {
 
     Cell nextCell = cell.nextGeneration(neighbors);
 
-    assertThat(nextCell.isAlive()).isFalse();
+    assertThat(nextCell.isDead()).isTrue();
   }
 
   @Test
@@ -74,6 +74,6 @@ public class CellTest {
 
     Cell nextCell = cell.nextGeneration(neighbors);
 
-    assertThat(nextCell.isAlive()).isFalse();
+    assertThat(nextCell.isDead()).isTrue();
   }
 }
