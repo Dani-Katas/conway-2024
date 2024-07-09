@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.List;
-
 public class Cell {
 
   private final boolean alive;
@@ -18,8 +16,8 @@ public class Cell {
     return new Cell(false);
   }
 
-  public Cell nextGeneration(final List<Cell> neighbors) {
-    final long aliveNeighbors = neighbors.stream().filter(Cell::isAlive).count();
+  public Cell nextGeneration(final Neighbors neighbors) {
+    final long aliveNeighbors = neighbors.getAliveNeighbors();
     if (!alive) {
       if(aliveNeighbors == 3) {
         return new Cell(true);
