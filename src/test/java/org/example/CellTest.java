@@ -26,4 +26,14 @@ public class CellTest {
 
     assertThat(nextCell.isAlive()).isTrue();
   }
+
+  @Test
+  public void an_alive_cells_keeps_alive_with_three_alive_neighbors() {
+    Cell cell = Cell.alive();
+    List<Cell> neighbors = List.of(Cell.alive(), Cell.alive(), Cell.alive(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead());
+
+    Cell nextCell = cell.nextGeneration(neighbors);
+
+    assertThat(nextCell.isAlive()).isTrue();
+  }
 }

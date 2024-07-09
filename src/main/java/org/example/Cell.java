@@ -19,7 +19,8 @@ public class Cell {
   }
 
   public Cell nextGeneration(final List<Cell> neighbors) {
-    if (neighbors.get(0).isAlive()) {
+    final long aliveNeighbors = neighbors.stream().filter(Cell::isAlive).count();
+    if (aliveNeighbors == 2 || aliveNeighbors == 3) {
       return new Cell(true);
     }
 
