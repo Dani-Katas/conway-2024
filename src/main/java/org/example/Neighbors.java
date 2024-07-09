@@ -41,11 +41,7 @@ public class Neighbors {
     return new Neighbors(cells);
   }
 
-  public List<Cell> getCells() {
-    return cells;
-  }
-
   long countAlive() {
-    return getCells().stream().filter(Cell::isAlive).count();
+    return cells.stream().filter(Cell::isAlive).count();
   }
 }
