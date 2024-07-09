@@ -1,27 +1,30 @@
 package org.example;
 
 public enum Neighbors {
-  ALL_DEAD,
-  ONE_ALIVE,
-  TWO_ALIVE,
-  THREE_ALIVE,
-  FOUR_ALIVE,
-  FIVE_ALIVE,
-  SIX_ALIVE,
-  SEVEN_ALIVE,
-  ALL_ALIVE;
+  ALL_DEAD {
+    @Override
+    public long countAlive() {
+      return 0;
+    }
+  },
+  TWO_ALIVE {
+    @Override
+    public long countAlive() {
+      return 2;
+    }
+  },
+  THREE_ALIVE {
+    @Override
+    public long countAlive() {
+      return 3;
+    }
+  },
+  FOUR_ALIVE {
+    @Override
+    public long countAlive() {
+      return 4;
+    }
+  };
 
-  long countAlive() {
-    return switch (this) {
-      case ALL_DEAD -> 0;
-      case ONE_ALIVE -> 1;
-      case TWO_ALIVE -> 2;
-      case THREE_ALIVE -> 3;
-      case FOUR_ALIVE -> 4;
-      case FIVE_ALIVE -> 5;
-      case SIX_ALIVE -> 6;
-      case SEVEN_ALIVE -> 7;
-      case ALL_ALIVE -> 8;
-    };
-  }
+  public abstract long countAlive();
 }
