@@ -10,7 +10,7 @@ public abstract class Cell {
     return new DeadCell();
   }
 
-  public abstract Cell nextGeneration(Neighbors neighbors);
+  public abstract Cell nextGeneration(final Neighbors neighbors);
 
   public abstract boolean isAlive();
 

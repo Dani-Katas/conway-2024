@@ -13,6 +13,7 @@ public class AliveCell extends Cell {
 
   @Override
   public Cell nextGeneration(final Neighbors neighbors) {
+
     if (neighbors.countAlive() == 2 || neighbors.countAlive() == 3) {
       return Cell.alive();
     }

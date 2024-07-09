@@ -1,47 +1,27 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Neighbors {
-
-  private final List<Cell> cells;
-
-  private Neighbors(final List<Cell> cells) {
-    this.cells = cells;
-  }
-
-  public static Neighbors of(
-    final Cell cell1,
-    final Cell cell2,
-    final Cell cell3,
-    final Cell cell4,
-    final Cell cell5,
-    final Cell cell6,
-    final Cell cell7,
-    final Cell cell8) {
-    return new Neighbors(List.of(cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8));
-  }
-
-  static Neighbors allDead() {
-    return of(Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead());
-  }
-
-  static Neighbors withAliveAmount(final int amount) {
-    if (amount > 8 || amount < 0) {
-      throw new IllegalArgumentException("Amount of alive cells must be less than 9");
-    }
-
-    final ArrayList<Cell> cells = new ArrayList<>();
-
-    for (int i = 0; i < 8; i++) {
-      cells.add(i < amount ? Cell.alive() : Cell.dead());
-    }
-
-    return new Neighbors(cells);
-  }
+public enum Neighbors {
+  ALL_DEAD,
+  ONE_ALIVE,
+  TWO_ALIVE,
+  THREE_ALIVE,
+  FOUR_ALIVE,
+  FIVE_ALIVE,
+  SIX_ALIVE,
+  SEVEN_ALIVE,
+  ALL_ALIVE;
 
   long countAlive() {
-    return cells.stream().filter(Cell::isAlive).count();
+    return switch (this) {
+      case ALL_DEAD -> 0;
+      case ONE_ALIVE -> 1;
+      case TWO_ALIVE -> 2;
+      case THREE_ALIVE -> 3;
+      case FOUR_ALIVE -> 4;
+      case FIVE_ALIVE -> 5;
+      case SIX_ALIVE -> 6;
+      case SEVEN_ALIVE -> 7;
+      case ALL_ALIVE -> 8;
+    };
   }
 }
