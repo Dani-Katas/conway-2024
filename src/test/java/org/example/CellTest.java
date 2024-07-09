@@ -36,4 +36,34 @@ public class CellTest {
 
     assertThat(nextCell.isAlive()).isTrue();
   }
+
+  @Test
+  public void a_dead_cell_remains_dead_with_two_neighbors() {
+    Cell cell = Cell.dead();
+    List<Cell> neighbors = List.of(Cell.alive(), Cell.alive(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead());
+
+    Cell nextCell = cell.nextGeneration(neighbors);
+
+    assertThat(nextCell.isAlive()).isFalse();
+  }
+
+  @Test
+  public void a_dead_cell_revives_with_three_neighbors() {
+    Cell cell = Cell.dead();
+    List<Cell> neighbors = List.of(Cell.alive(), Cell.alive(), Cell.alive(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead());
+
+    Cell nextCell = cell.nextGeneration(neighbors);
+
+    assertThat(nextCell.isAlive()).isTrue();
+  }
+
+  /*@Test
+  public void an_alive_cells_keeps_alive_with_four_alive_neighbors() {
+    Cell cell = Cell.alive();
+    List<Cell> neighbors = List.of(Cell.alive(), Cell.alive(), Cell.alive(), Cell.alive(), Cell.dead(), Cell.dead(), Cell.dead(), Cell.dead());
+
+    Cell nextCell = cell.nextGeneration(neighbors);
+
+    assertThat(nextCell.isAlive()).isFalse();
+  }*/
 }

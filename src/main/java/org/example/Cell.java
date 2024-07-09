@@ -20,6 +20,14 @@ public class Cell {
 
   public Cell nextGeneration(final List<Cell> neighbors) {
     final long aliveNeighbors = neighbors.stream().filter(Cell::isAlive).count();
+    if (!alive) {
+      if(aliveNeighbors == 3) {
+        return new Cell(true);
+      }
+
+      return new Cell(false);
+    }
+
     if (aliveNeighbors == 2 || aliveNeighbors == 3) {
       return new Cell(true);
     }
