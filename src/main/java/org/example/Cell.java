@@ -1,12 +1,6 @@
 package org.example;
 
-public class Cell {
-
-  protected final boolean alive;
-
-  public Cell(final boolean alive) {
-    this.alive = alive;
-  }
+public abstract class Cell {
 
   public static Cell alive() {
     return new AliveCell();
@@ -17,7 +11,7 @@ public class Cell {
   }
 
   public Cell nextGeneration(final Neighbors neighbors) {
-    if (!alive) {
+    if (isDead()) {
       if(neighbors.countAlive() == 3) {
         return Cell.alive();
       }
@@ -32,11 +26,7 @@ public class Cell {
     return Cell.dead();
   }
 
-  public boolean isAlive() {
-    return alive;
-  }
+  public abstract boolean isAlive();
 
-  public boolean isDead() {
-    return !alive;
-  }
+  public abstract boolean isDead();
 }
